@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blood Donation App</title>
+  <style>
+    /* General Reset */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #c31432, #240b36);
+      padding: 12px 30px;
+    }
+    .navbar a {
+      color: white;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .navbar a:hover {
+      color: #ffe600;
+      transform: scale(1.1);
+    }
+
+    /* Header */
+    header {
+      background: url('https://img.freepik.com/free-photo/red-heart-stethoscope-medical-equipment_1150-19014.jpg') center/cover no-repeat;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+    header p {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+    header a {
+      background: #e60023;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    header a:hover {
+      background: #ff003c;
+      transform: scale(1.1);
+    }
+
+    /* Section */
+    .container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .col-md-4 {
+      flex: 1;
+      min-width: 280px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .col-md-4:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .col-md-4 h2 {
+      color: #c31432;
+      margin-bottom: 15px;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Footer */
+    footer {
+      background: #240b36;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="blood-donate.html">Donate Blood</a>
+    <a href="index.html">Home</a>
+    <a href="bdabout.html">About Us</a>
+    <a href="find-drive.html">Find a Drive</a>
+    <a href="bdcontact.html">Contact Us</a>
+    <a href="bdlogin.html">Login</a>
+    <a href="bdregister.html">Register</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1>Be a Hero, Donate Blood.</h1>
+      <p>Your donation can save up to three lives.</p>
+      <a href="bdregister.html">Register Now</a>
+    </div>
+  </header>
+
+  <!-- Info Section -->
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <h2>Why Donate?</h2>
+        <p>Learn about the critical need for blood donors and how your small act can bring big changes.</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Find a Center</h2>
+        <p>Locate a nearby blood donation center or drive with our simple locator feature.</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Check Eligibility</h2>
+        <p>Find out if you are eligible to donate blood and contribute to saving lives today.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Blood Donation App | Made with ❤️ to Save Lives</p>
+  </footer>
+
+  <!-- Internal JS -->
+  <script>
+    // Button pulse effect
+    const btn = document.querySelector("header a");
+    setInterval(() => {
+      btn.style.transform = "scale(1.15)";
+      setTimeout(() => btn.style.transform = "scale(1)", 300);
+    }, 3000);
+
+    // Navbar scroll effect
+    window.addEventListener("scroll", () => {
+      document.querySelector(".navbar").style.boxShadow =
+        window.scrollY > 20 ? "0 3px 10px rgba(0,0,0,0.4)" : "none";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <!-- Use a simple, clean font like Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Custom CSS for a red and black background gradient */
+            background-image: linear-gradient(135deg, #b71c1c 0%, #000000 100%);
+        }
+
+        /* Custom animation for the form card */
+        .form-card {
+            animation: fadeInScale 0.5s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Dark mode styling for custom CSS */
+        .dark .form-card {
+            background-color: #1f2937;
+        }
+
+        .dark body {
+            background-image: linear-gradient(135deg, #1f0101 0%, #000000 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Forgot Password Card Container -->
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-md form-card">
+        <!-- Main title -->
+        <h1 class="text-3xl font-bold text-center text-gray-900 dark:text-white mb-2">Forgot Password?</h1>
+        <!-- Sub-title/instruction text -->
+        <p class="text-center text-gray-500 dark:text-gray-400 mb-6">
+            Enter your email address and we'll send you a link to reset your password.
+        </p>
+        
+        <!-- The Forgot Password Form -->
+        <form id="forgotPasswordForm" action="#" method="POST" onsubmit="handleFormSubmit(event)">
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent dark:bg-gray-700 dark:text-white" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition duration-300 ease-in-out">
+                Reset Password
+            </button>
+        </form>
+
+        <!-- Message Box for user feedback -->
+        <div id="messageBox" class="mt-6 text-center py-3 px-4 rounded-lg hidden transition-opacity duration-300 ease-in-out">
+            <p id="messageText" class="text-sm font-medium"></p>
+        </div>
+
+        <!-- Links for existing users -->
+        <div class="mt-6 text-center">
+            <p class="text-gray-500 dark:text-gray-400 text-sm">
+                Remember your password?
+                <a href="bdlogin.html" class="text-red-600 hover:text-red-500 font-semibold transition-colors duration-300 ease-in-out">Log in</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
+
+            // Get the email input element and its value
+            const emailInput = document.getElementById('email');
+            const email = emailInput.value;
+
+            // Get the message box elements
+            const messageBox = document.getElementById('messageBox');
+            const messageText = document.getElementById('messageText');
+
+            // Reset the message box state
+            messageBox.classList.add('hidden');
+            messageBox.classList.remove('bg-green-100', 'bg-red-100', 'text-green-800', 'text-red-800', 'opacity-100');
+            messageText.textContent = '';
+            
+            // Basic validation
+            if (!email) {
+                showMessage('Please enter your email address.', 'error');
+                return;
+            }
+
+            // In a real application, you would send this email to your backend server
+            // for processing. Here, we'll just show a success message.
+            console.log(`Password reset requested for email: ${email}`);
+            
+            // Simulate a successful API response
+            showMessage('If an account with that email exists, a password reset link has been sent.', 'success');
+
+            // Optionally, clear the email input after a successful submission
+            emailInput.value = '';
+        }
+
+        // Function to display messages to the user
+        function showMessage(message, type) {
+            const messageBox = document.getElementById('messageBox');
+            const messageText = document.getElementById('messageText');
+            
+            // Set message text and styling based on type (success or error)
+            messageText.textContent = message;
+            if (type === 'success') {
+                messageBox.classList.remove('hidden', 'bg-red-100', 'text-red-800');
+                messageBox.classList.add('bg-green-100', 'text-green-800', 'opacity-100');
+            } else if (type === 'error') {
+                messageBox.classList.remove('hidden', 'bg-green-100', 'text-green-800');
+                messageBox.classList.add('bg-red-100', 'text-red-800', 'opacity-100');
+            }
+        }
+    </script>
+</body>
+</html>

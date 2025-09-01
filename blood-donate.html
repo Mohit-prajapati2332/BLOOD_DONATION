@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate Blood | Blood Donation App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      color: #333;
+    }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #c31432, #240b36);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffe600;
+    }
+
+    /* Hero */
+    .hero {
+      background: url('https://img.freepik.com/free-photo/hand-holding-red-heart-symbol-charity-love_1150-26384.jpg') center/cover no-repeat;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: white;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    .hero h1 {
+      position: relative;
+      font-size: 2.8rem;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Donation Form */
+    .donate-section {
+      max-width: 750px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .donate-section h2 {
+      text-align: center;
+      color: #c31432;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .form-group textarea {
+      resize: none;
+    }
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #c31432, #240b36);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    }
+
+    /* Footer */
+    footer {
+      background: #240b36;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo"><a href="blood-donate.html"><b>Donate Blood</b></a></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="bdabout.html">About Us</a>
+      <a href="blood-donate.html">Donate</a>
+      <a href="bdcontact.html">Contact</a>
+      <a href="bdlogin.html">Login</a>
+      <a href="bdregister.html">Register</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Donate Blood, Save Lives</h1>
+  </section>
+
+  <!-- Donation Form -->
+  <section class="donate-section">
+    <h2>Blood Donation Form</h2>
+    <form id="donation-form">
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" min="18" max="65" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="blood">Blood Group</label>
+        <select id="blood" required>
+          <option value="">Select</option>
+          <option>A+</option>
+          <option>A-</option>
+          <option>B+</option>
+          <option>B-</option>
+          <option>O+</option>
+          <option>O-</option>
+          <option>AB+</option>
+          <option>AB-</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" pattern="[0-9]{10}" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Full Address</label>
+        <textarea id="address" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="health">Health Conditions (if any)</label>
+        <textarea id="health" rows="2"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="date">Available Date for Donation</label>
+        <input type="date" id="date" required>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Blood Donation App | Made with ❤️ to Save Lives</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("donation-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("🎉 Thank you for registering as a blood donor! We will contact you soon.");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

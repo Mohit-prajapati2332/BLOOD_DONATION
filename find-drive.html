@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Driver | Blood Donation App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f8f9fa;
+    }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffe600;
+    }
+
+    /* Hero */
+    .hero {
+      background: url('https://img.freepik.com/free-photo/ambulance-emergency-concept_23-2148535649.jpg') center/cover no-repeat;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: white;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    .hero h1 {
+      position: relative;
+      font-size: 2.6rem;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Form Section */
+    .form-section {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .form-section h2 {
+      text-align: center;
+      color: #dd2476;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #ff4b2b, #ff416c);
+    }
+
+    /* Confirmation Message */
+    #confirmation {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background: #e6ffe6;
+      border: 2px solid #00b894;
+      color: #2d3436;
+      border-radius: 12px;
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #240b36;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo"><a href="index.html"><b>Donate Blood</b></a></div>
+    <div>
+       <a href="index.html">Home</a>
+      <a href="bdabout.html">About Us</a>
+      <a href="find-drive.html">Find a Drive</a>
+      <a href="bdcontact.html">Contact</a>
+      <a href="bdlogin.html">Login</a>
+      <a href="bdregister.html">Register</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Find a Driver for Blood Transport</h1>
+  </section>
+
+  <!-- Driver Request Form -->
+  <section class="form-section">
+    <h2>Driver Request Form</h2>
+    <form id="driver-form">
+      <div class="form-group">
+        <label for="pickup">Pickup Location</label>
+        <input type="text" id="pickup" placeholder="Enter donor address" required>
+      </div>
+      <div class="form-group">
+        <label for="hospital">Hospital Location</label>
+        <input type="text" id="hospital" placeholder="Enter hospital address" required>
+      </div>
+      <div class="form-group">
+        <label for="driver-type">Driver Type</label>
+        <select id="driver-type" required>
+          <option value="">Select</option>
+          <option>Car Driver</option>
+          <option>Ambulance Driver</option>
+          <option>Bike Courier</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="datetime">Preferred Date & Time</label>
+        <input type="datetime-local" id="datetime" required>
+      </div>
+      <button type="submit" class="btn">Confirm Driver Request</button>
+    </form>
+
+    <!-- Confirmation Box -->
+    <div id="confirmation">
+      ✅ Your driver request has been submitted successfully!  
+      We will assign a driver and notify you shortly. 🚑
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Blood Donation App | Together We Save Lives ❤️</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("driver-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      document.getElementById("confirmation").style.display = "block";
+      this.reset();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>

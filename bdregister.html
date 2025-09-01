@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Blood Donation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #c31432, #240b36);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      background: linear-gradient(90deg, #c31432, #240b36);
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar .logo a {
+      color: #ffe600;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .navbar div a {
+      color: white;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .navbar div a:hover {
+      color: #ffe600;
+      transform: scale(1.1);
+    }
+
+    /* Container */
+    .registration-container {
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 40px;
+      border-radius: 15px;
+      width: 500px;
+      max-width: 95%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease-in-out;
+      color: #fff;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffe600;
+      margin-bottom: 25px;
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+    .form-control:focus {
+      box-shadow: 0 0 10px #ffe600;
+      transform: scale(1.02);
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-danger { background: #e60023; color: white; }
+    .btn-danger:hover { background: #ff003c; transform: scale(1.05); }
+
+    .btn-success { background: #28a745; color: white; }
+    .btn-success:hover { background: #34d058; transform: scale(1.05); }
+
+    .btn-info { background: #17a2b8; color: white; }
+    .btn-info:hover { background: #20c997; transform: scale(1.05); }
+
+    .btn-outline { background: transparent; border: 2px solid #ffe600; color: #ffe600; }
+    .btn-outline:hover { background: #ffe600; color: #240b36; transform: scale(1.05); }
+
+    .btn-secondary { background: #6c757d; color: white; }
+    .btn-secondary:hover { background: #868e96; transform: scale(1.05); }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Extra Links */
+    .extra-links {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .extra-links a {
+      color: #ffe600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .extra-links a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><a href="index.html">Donate Blood</a></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="bdabout.html">About Us</a>
+      <a href="find-drive.html">Find a Drive</a>
+      <a href="bdcontact.html">Contact</a>
+      <a href="bdlogin.html">Login</a>
+      <a href="bdregister.html">Register</a>
+    </div>
+  </div>
+
+  <!-- Registration Form -->
+  <div class="registration-container">
+    <h2>Blood Donation Registration</h2>
+    <form id="register-form">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="blood_group">Blood Group:</label>
+        <select id="blood_group" class="form-control" required>
+          <option value="" disabled selected>Select your blood group</option>
+          <option>A+</option><option>A-</option>
+          <option>B+</option><option>B-</option>
+          <option>O+</option><option>O-</option>
+          <option>AB+</option><option>AB-</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mode">Mode:</label>
+        <select id="mode" class="form-control" required>
+          <option value="" disabled selected>Select option</option>
+          <option value="donor">Donor</option>
+          <option value="recipient">Recipient</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" class="form-control" placeholder="Enter your age" min="18" max="65" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" class="form-control" placeholder="Enter 10 digit phone number" pattern="^[0-9]{10}$" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" class="form-control" rows="3" placeholder="Enter your address" required></textarea>
+      </div>
+
+      <!-- Different Buttons -->
+      <button type="submit" class="btn btn-danger">Register</button>
+      <button type="button" class="btn btn-success">Register with Google</button>
+      <button type="button" class="btn btn-info">Register with Facebook</button>
+      <button type="button" class="btn btn-outline">Register with Phone</button>
+      <button type="reset" class="btn btn-secondary">Reset</button>
+    </form>
+
+    <div class="extra-links">
+      <p>Already registered? <a href="bdlogin.html">Login</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Simple Form Validation & Fake Register Simulation
+    document.getElementById("register-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      if(name === "" || phone === ""){
+        alert("⚠️ Please fill all required fields.");
+        return;
+      }
+
+      const btn = document.querySelector(".btn-danger");
+      btn.innerText = "Registering...";
+      btn.style.background = "#ffe600";
+      btn.style.color = "#240b36";
+
+      setTimeout(() => {
+        alert("🎉 Registration Successful! Welcome " + name);
+        btn.innerText = "Register";
+        btn.style.background = "#e60023";
+        btn.style.color = "#fff";
+        document.getElementById("register-form").reset();
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
